@@ -85,7 +85,7 @@ const newGallery = images.reduce((html, image) =>
 
 galleryList.innerHTML = newGallery;
 
-let gallery = new SimpleLightbox('.gallery a', 
+const gallery = new SimpleLightbox('.gallery a', 
     {
     captionDelay: 250,
     captionsData: 'alt'

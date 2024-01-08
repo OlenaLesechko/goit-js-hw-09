@@ -26,9 +26,9 @@ formEl.addEventListener('input', e => {
 });
 formEl.addEventListener('submit', e => {
     e.preventDefault();
-    const login = formEl.elements.email.value.trim();
-    const message = formEl.elements.message.value.trim();
-    if (!login || !message) {
+    const emailUserForm = formEl.elements.email.value.trim();
+    const messageUserForm = formEl.elements.message.value.trim();
+    if (!emailUserForm  || !messageUserForm) {
         alert('All form fields must be filled in');
     } else {
     console.log(userFeedback);
