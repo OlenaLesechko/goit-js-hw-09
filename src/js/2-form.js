@@ -7,8 +7,8 @@ try {
     );
     
     if (typeof initialFormData === 'object' && initialFormData !== null) {
-        formEl.elements.email.value = email;
-        formEl.elements.message.value = message;
+        formEl.elements.email.value = initialFormData.email;
+        formEl.elements.message.value = initialFormData.message;
     };
 }
 catch {
@@ -30,14 +30,13 @@ formEl.addEventListener('input', e => {
 });
 
 
-
-
 formEl.addEventListener('submit', e => {
     e.preventDefault();
     const email = formEl.elements.email.value.trim();
     const message = formEl.elements.message.value.trim();
-    if (!email  || !message) {
-        alert('All form fields must be filled in');
+    if (!email || !message) {
+        
+        console.error('All form fields must be filled in');
     } else {
         const storageInfo = JSON.parse(localStorage.getItem(localStorageFeedbackKey));
     
