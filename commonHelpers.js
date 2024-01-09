@@ -4,6 +4,7 @@ import"./assets/styles-1591e518.js";import{S as i}from"./assets/vendor-c9def49e.
         class="gallery-image"
         src="${p.preview}"
         alt="${p.description}"
+        width="360"
         />
     </a>
     </li>`,"");t.innerHTML=e;new i(".gallery a",{captionDelay:250,captionsData:"alt"});
