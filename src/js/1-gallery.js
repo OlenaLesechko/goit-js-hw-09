@@ -77,7 +77,6 @@ const newGallery = images.reduce((html, image) =>
         class="gallery-image"
         src="${image.preview}"
         alt="${image.description}"
-        width="360"
         />
     </a>
     </li>`, ''
@@ -90,4 +89,3 @@ const gallery = new SimpleLightbox('.gallery a',
     captionDelay: 250,
     captionsData: 'alt'
 });
-gallery.close();

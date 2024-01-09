@@ -1,6 +1,23 @@
 const formEl = document.querySelector('.feedback-form');
 const localStorageFeedbackKey = 'feedback-form-state';
 
+try {
+    const initialFormData = JSON.parse(
+    localStorage.getItem(localStorageFeedbackKey)
+    );
+    
+    if (typeof initialFormData === 'object' && initialFormData !== null) {
+        formEl.elements.email.value = email;
+        formEl.elements.message.value = message;
+    };
+}
+catch {
+    if (!JSON.parse(localStorage.getItem(localStorageFeedbackKey))) {
+        console.log();
+    }
+    else console.error('PARSE FORM STORAGE ERROR');
+}
+
 formEl.addEventListener('input', e => {
     const data = new FormData(formEl);
     const userFeedback = {};
@@ -14,11 +31,12 @@ formEl.addEventListener('input', e => {
 
 
 
+
 formEl.addEventListener('submit', e => {
     e.preventDefault();
-    const emailUserForm = formEl.elements.email.value.trim();
-    const messageUserForm = formEl.elements.message.value.trim();
-    if (!emailUserForm  || !messageUserForm) {
+    const email = formEl.elements.email.value.trim();
+    const message = formEl.elements.message.value.trim();
+    if (!email  || !message) {
         alert('All form fields must be filled in');
     } else {
         const storageInfo = JSON.parse(localStorage.getItem(localStorageFeedbackKey));
@@ -29,20 +47,3 @@ formEl.addEventListener('submit', e => {
     }
 });
 
-try {
-    const initialFormData = JSON.parse(
-    localStorage.getItem(localStorageFeedbackKey)
-    );
-    const {email, message} = initialFormData;
-    
-    if (initialFormData) {
-        form.elements.email.value = email;
-        form.elements.message.value = message;
-    };
-}
-catch {
-    if (!JSON.parse(localStorage.getItem(localStorageFeedbackKey))) {
-        console.log();
-    }
-    else console.error('PARSE FORM STORAGE ERROR');
-}
