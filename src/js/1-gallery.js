@@ -77,6 +77,7 @@ const newGallery = images.reduce((html, image) =>
         class="gallery-image"
         src="${image.preview}"
         alt="${image.description}"
+        width="360"
         />
     </a>
     </li>`, ''
