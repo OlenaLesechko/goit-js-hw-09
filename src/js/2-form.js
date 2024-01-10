@@ -28,7 +28,7 @@ formEl.addEventListener('submit', e => {
     const message = formEl.elements.message.value.trim();
     if (!email || !message) {
         
-        console.error('All form fields must be filled in');
+        alert('All form fields must be filled in');
     } else {
         const storageInfo = JSON.parse(localStorage.getItem(localStorageFeedbackKey));
     
