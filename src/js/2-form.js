@@ -1,26 +1,18 @@
 const formEl = document.querySelector('.feedback-form');
-const localStorageFeedbackKey = 'feedback-form-state';
+const localStorageFeedbackKey = localStorage.getItem('feedback-form-state');
 
-try {
-    const initialFormData = JSON.parse(
-    localStorage.getItem(localStorageFeedbackKey)
-    );
+const initialFormData = JSON.parse(
+    localStorage.getItem(localStorageFeedbackKey));
     
-    if (typeof initialFormData === 'object' && initialFormData !== null) {
-        formEl.elements.email.value = initialFormData.email;
-        formEl.elements.message.value = initialFormData.message;
-    };
+if (initialFormData?.email || initialFormData?.message) {
+    formEl.elements.email.value = initialFormData.email;
+    formEl.elements.message.value = initialFormData.message;
 }
-catch {
-    if (!JSON.parse(localStorage.getItem(localStorageFeedbackKey))) {
-        console.log();
-    }
-    else console.error('PARSE FORM STORAGE ERROR');
-}
+
 
 formEl.addEventListener('input', e => {
     const data = new FormData(formEl);
-    const userFeedback = {};
+    const userFeedback = { email: '', message: '' };
 
     data.forEach((value, key) => {
     userFeedback[key] = value.trim();
