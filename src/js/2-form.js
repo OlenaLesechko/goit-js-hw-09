@@ -1,5 +1,5 @@
 const formEl = document.querySelector('.feedback-form');
-const localStorageFeedbackKey = localStorage.getItem('feedback-form-state');
+const localStorageFeedbackKey = 'feedback-form-state';
 
 const initialFormData = JSON.parse(
     localStorage.getItem(localStorageFeedbackKey));
